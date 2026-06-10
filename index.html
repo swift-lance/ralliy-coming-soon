@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Ralliy — Coming Soon</title>
+    <meta
+      name="description"
+      content="Ralliy is the AI-powered freelance marketplace connecting global freelancers with international clients. Launching soon."
+    />
+    <meta name="theme-color" content="#6b5dbf" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:title" content="Ralliy — Coming Soon" />
+    <meta
+      property="og:description"
+      content="The AI-powered freelance marketplace. Launching soon."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ralliy.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --background: 0 0% 100%;
+        --foreground: 230 25% 12%;
+        --muted-foreground: 230 10% 45%;
+        --primary: 255 35% 50%;
+        --primary-foreground: 0 0% 100%;
+        --border: 230 15% 90%;
+
+        --gradient-hero:
+          radial-gradient(60% 70% at 90% 30%, hsl(270 80% 92% / 0.75) 0%, hsl(0 0% 100% / 0) 70%),
+          radial-gradient(50% 60% at 10% 80%, hsl(255 80% 92% / 0.55) 0%, hsl(0 0% 100% / 0) 70%),
+          linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 99%) 100%);
+        --gradient-brand: linear-gradient(135deg, hsl(255 35% 50%) 0%, hsl(250 38% 55%) 100%);
+
+        --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: 230 30% 7%;
+          --foreground: 230 15% 96%;
+          --muted-foreground: 230 12% 65%;
+          --primary: 255 35% 65%;
+          --primary-foreground: 230 30% 7%;
+          --border: 230 18% 18%;
+
+          --gradient-hero:
+            radial-gradient(60% 70% at 90% 30%, hsl(270 75% 30% / 0.45) 0%, hsl(230 30% 7% / 0) 70%),
+            radial-gradient(50% 60% at 10% 80%, hsl(255 60% 25% / 0.35) 0%, hsl(230 30% 7% / 0) 70%),
+            linear-gradient(180deg, hsl(230 30% 7%) 0%, hsl(230 30% 5%) 100%);
+          --gradient-brand: linear-gradient(135deg, hsl(255 35% 65%) 0%, hsl(250 38% 68%) 100%);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+      }
+
+      body {
+        font-family: var(--font-sans);
+        color: hsl(var(--foreground));
+        background: hsl(var(--background));
+        background-image: var(--gradient-hero);
+        background-attachment: fixed;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        min-height: 100vh;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* Dot grid texture */
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: radial-gradient(
+          circle,
+          hsl(var(--foreground) / 0.055) 1px,
+          transparent 1px
+        );
+        background-size: 28px 28px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* Soft orbs */
+      .orb {
+        position: fixed;
+        border-radius: 9999px;
+        filter: blur(80px);
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.55;
+      }
+      .orb-1 {
+        top: -120px;
+        right: -120px;
+        width: 360px;
+        height: 360px;
+        background: hsl(var(--primary) / 0.18);
+      }
+      .orb-2 {
+        bottom: -100px;
+        left: -100px;
+        width: 280px;
+        height: 280px;
+        background: hsl(270 70% 60% / 0.14);
+      }
+
+      .page {
+        position: relative;
+        z-index: 1;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: clamp(20px, 4vw, 40px);
+      }
+
+      header.brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 22px;
+        letter-spacing: -0.01em;
+      }
+
+      .logo-mark {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        background: var(--gradient-brand);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: hsl(var(--primary-foreground));
+        box-shadow:
+          0 10px 30px -10px hsl(var(--primary) / 0.5),
+          inset 0 1px 0 hsl(255 100% 100% / 0.25);
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(40px, 8vw, 80px) 0;
+      }
+
+      .card {
+        max-width: 640px;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .icon-wrap {
+        position: relative;
+        width: 84px;
+        height: 84px;
+      }
+      .icon-wrap::before {
+        content: '';
+        position: absolute;
+        inset: -12px;
+        background: hsl(var(--primary) / 0.18);
+        border-radius: 9999px;
+        filter: blur(18px);
+      }
+      .icon-box {
+        position: relative;
+        width: 84px;
+        height: 84px;
+        border-radius: 20px;
+        background: hsl(var(--background));
+        border: 1px solid hsl(var(--primary) / 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 16px 40px -16px hsl(var(--primary) / 0.35);
+      }
+      .icon-box svg {
+        width: 38px;
+        height: 38px;
+        color: hsl(var(--primary));
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 9999px;
+        background: hsl(var(--primary) / 0.1);
+        color: hsl(var(--primary));
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        box-shadow: inset 0 0 0 1px hsl(var(--primary) / 0.2);
+      }
+      .badge .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 9999px;
+        background: hsl(var(--primary));
+        animation: pulse 1.8s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(0.85);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .badge .dot {
+          animation: none;
+        }
+      }
+
+      h1 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: clamp(40px, 6vw, 60px);
+        line-height: 1.05;
+        letter-spacing: -0.025em;
+        margin: 0;
+      }
+      h1 .accent {
+        background: var(--gradient-brand);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .lede {
+        font-size: clamp(15px, 1.6vw, 17px);
+        line-height: 1.65;
+        color: hsl(var(--muted-foreground));
+        max-width: 520px;
+        margin: 0;
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: hsl(var(--muted-foreground) / 0.5);
+        font-size: 12px;
+      }
+      .divider span:first-child,
+      .divider span:last-child {
+        width: 44px;
+        height: 1px;
+        background: hsl(var(--border));
+      }
+
+      .meta {
+        font-size: 12.5px;
+        color: hsl(var(--muted-foreground));
+      }
+      .meta a {
+        color: hsl(var(--primary));
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .meta a:hover {
+        text-decoration: underline;
+      }
+
+      footer {
+        position: relative;
+        z-index: 1;
+        padding: 24px clamp(20px, 4vw, 40px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        color: hsl(var(--muted-foreground));
+        border-top: 1px solid hsl(var(--border) / 0.6);
+      }
+      footer a {
+        color: inherit;
+        text-decoration: none;
+      }
+      footer a:hover {
+        color: hsl(var(--primary));
+      }
+
+      @media (max-width: 520px) {
+        footer {
+          flex-direction: column;
+          gap: 6px;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="orb orb-1" aria-hidden="true"></div>
+    <div class="orb orb-2" aria-hidden="true"></div>
+
+    <div class="page">
+      <header class="brand">
+        <span class="logo-mark" aria-hidden="true">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            width="18"
+            height="18"
+          >
+            <path
+              d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"
+            />
+          </svg>
+        </span>
+        Ralliy
+      </header>
+
+      <main>
+        <div class="card">
+          <div class="icon-wrap">
+            <div class="icon-box">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <span class="badge">
+            <span class="dot"></span>
+            Coming Soon
+          </span>
+
+          <h1>
+            Smarter freelance hiring,<br />
+            powered by <span class="accent">AI matching</span>.
+          </h1>
+
+          <p class="lede">
+            Ralliy connects global freelancers with international clients through an AI engine that
+            scores talent against every job. We&rsquo;re putting the finishing touches on the
+            platform &mdash; launching soon.
+          </p>
+
+          <div class="divider" aria-hidden="true">
+            <span></span>
+            <span>&bull;</span>
+            <span></span>
+          </div>
+
+          <p class="meta">
+            Questions or partnership enquiries?
+            <a href="mailto:hello@ralliy.com">hello@ralliy.com</a>
+          </p>
+        </div>
+      </main>
+
+      <footer>
+        <span>&copy; <script>document.write(new Date().getFullYear());</script> Ralliy. All rights reserved.</span>
+        <span>ralliy.com</span>
+      </footer>
+    </div>
+  </body>
+</html>
